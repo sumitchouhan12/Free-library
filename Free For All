@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Library</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background: #35424a;
+            color: #ffffff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 20px;
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background: #35424a;
+            color: #ffffff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .item img {
+            width: 50px;
+            height: 75px;
+            margin-right: 10px;
+        }
+
+        .vocab-item {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Free Library</h1>
+        <nav>
+            <ul>
+                <li><a href="#books">Books</a></li>
+                <li><a href="#poems">Poems</a></li>
+                <li><a href="#idioms">Idioms</a></li>
+                <li><a href="#vocabulary">Vocabulary</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="books">
+            <h2>Books</h2>
+            <div id="book-list"></div>
+        </section>
+        <section id="poems">
+            <h2>Poems</h2>
+            <div id="poem-list"></div>
+        </section>
+        <section id="idioms">
+            <h2>Idioms</h2>
+            <div id="idiom-list"></div>
+        </section>
+        <section id="vocabulary">
+            <h2>Vocabulary</h2>
+            <div id="vocab-list"></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Free Library</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const books = [
+                { title: "Pride and Prejudice", author: "Jane Austen", link: "https://www.gutenberg.org/ebooks/1342", image: "https://covers.openlibrary.org/b/id/8221251-L.jpg" },
+                { title: "Moby Dick", author: "Herman Melville", link: "https://www.gutenberg.org/ebooks/2701", image: "https://covers.openlibrary.org/b/id/6152001-L.jpg" },
+                // Add more books as needed
+            ];
+
+            const poems = [
+                { title: "The Road Not Taken", author: "Robert Frost", link: "https://www.poetryfoundation.org/poems/44272/the-road-not-taken", image: "https://www.poetryfoundation.org/media/poems/44272/road.jpg" },
+                // Add more poems as needed
+            ];
+
+            const idioms = [
+                { phrase: "Break the ice", meaning: "To initiate conversation in a social setting." },
+                // Add more idioms as needed
+            ];
+
+            const vocabulary = [
+                { word: "Aberration", meaning: "A departure from what is normal or expected.", synonyms: "Deviation, anomaly", antonyms: "Normality, standard", degree: "Noun" },
+                { word: "Belligerent", meaning: "Hostile and aggressive.", synonyms: "Aggressive, combative", antonyms: "Peaceful, friendly", degree: "Adjective" },
+                // Add more vocabulary as needed
+            ];
+
+            const bookList = document.getElementById('book-list');
+            const poemList = document.getElementById('poem-list');
+            const idiomList = document.getElementById('idiom-list');
+            const vocabList = document.getElementById('vocab-list');
+
+            books.forEach(book => {
+                const div = document.createElement('div');
+                div.className = 'item';
+                div.innerHTML = `<img src="${book.image}" alt="${book.title} cover"><a href="${book.link}" target="_blank">${book.title}</a> by ${book.author}`;
+                bookList.appendChild(div);
+            });
+
+            poems.forEach(poem => {
+                const div = document.createElement('div');
+                div.className = 'item';
+                div.innerHTML = `<img src="${poem.image}" alt="${poem.title} cover"><a href="${poem.link}" target="_blank">${poem.title}</a> by ${poem.author}`;
+                poemList.appendChild(div);
+            });
+
+            idioms.forEach(idiom => {
+                const div = document.createElement('div');
+                div.innerHTML = `<strong>${idiom.phrase}</strong>: ${idiom.meaning}`;
+                idiomList.appendChild(div);
+            });
+
+            vocabulary.forEach(vocab => {
+                const div = document.createElement('div');
+                div.className = 'vocab-item';
+                div.innerHTML = `<strong>${vocab.word}</strong>: ${vocab.meaning} <br> Synonyms: ${vocab.synonyms} <br> Antonyms: ${vocab.antonyms} <br> Degree: ${vocab.degree}`;
+                vocabList.appendChild(div);
+            });
+        });
+    </script>
+</body>
+</html>
